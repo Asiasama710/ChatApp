@@ -36,7 +36,7 @@ fun MessageCard(
                             color = if (message.isMe) {
                                 Theme.colors.primary
                             } else {
-                                Theme.colors.onPrimary
+                                Theme.colors.surface
                             },
                             shape = RoundedCornerShape(
                                     topStart = 8.dp,
