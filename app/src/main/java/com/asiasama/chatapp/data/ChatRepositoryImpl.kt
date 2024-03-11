@@ -1,5 +1,6 @@
 package com.asiasama.chatapp.data
 
+import android.util.Log
 import com.asiasama.chatapp.data.model.MessageDto
 import com.asiasama.chatapp.data.model.toDto
 import com.asiasama.chatapp.data.model.toEntity
@@ -52,9 +53,7 @@ class ChatRepositoryImpl (): ChatRepository {
 
     override fun getMessages(senderId: String): Flow<List<Message>> {
         return messages.map {
-            it.filter { messagesDto ->
-                messagesDto.senderId == senderId
-            }.map { messageDto ->
+            it.map { messageDto ->
                 messageDto.toEntity()
             }
         }
@@ -77,7 +76,7 @@ class ChatRepositoryImpl (): ChatRepository {
         messages.value += MessageDto(
                 id = Random.nextInt().toString(),
                 message = fakeAnswers.random(),
-                senderId =message.senderId,
+                senderId =message.receiverId,
                 senderAvatar = ""
         )
     }
