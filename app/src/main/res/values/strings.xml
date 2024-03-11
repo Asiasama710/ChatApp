@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ChatApp</string>
+    <string name="last_seen_recently">last seen recently</string>
+    <string name="online">Online</string>
+</resources>
