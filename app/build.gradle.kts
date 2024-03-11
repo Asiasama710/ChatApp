@@ -76,8 +76,8 @@ dependencies {
     implementation(libs.lottie.compose)
 
     // Koin
-    implementation("io.insert-koin:koin-core:3.5.0")
-    implementation("io.insert-koin:koin-androidx-compose:3.4.6")
+    implementation(libs.koin.core)
+    implementation(libs.koin.androidx.compose)
 
 
 }
