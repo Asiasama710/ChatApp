@@ -8,6 +8,8 @@ data class ChatUiState(
     val messages: List<MessageUIState> = emptyList(),
     val message: String = "",
     val isLoading: Boolean = false,
+    val isRecording: Boolean = false,
+    val isRecordingPause: Boolean = false,
     val error: String? = "",
 ) {
 

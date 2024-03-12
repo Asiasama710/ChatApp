@@ -3,6 +3,8 @@ package com.asiasama.chatapp.ui.screen.chat
 import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,13 +21,16 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.asiasama.chatapp.R
 import com.asiasama.chatapp.ui.screen.chat.composable.ChatAppBar
-import com.asiasama.chatapp.ui.screen.chat.composable.ChatTextField
+import com.asiasama.chatapp.ui.screen.chat.composable.SendMessageBox
 import com.asiasama.chatapp.ui.screen.chat.composable.MessageCard
+import com.asiasama.chatapp.ui.theme.Theme
 import org.koin.androidx.compose.koinViewModel
 import kotlin.math.abs
 
@@ -44,6 +49,10 @@ fun ChatScreen(
             onValueChanged = viewModel::onChanceMessage,
             onSendMessage = viewModel::onSendClicked,
             onCLickBack = { /*TODO back to screen chats*/ },
+            onClickRecordVoice = viewModel::onRecordVoiceClicked,
+            onClickCancelRecord = viewModel::onCancelRecordClicked,
+            onClickPauseRecord = viewModel::onPauseRecordClicked,
+            onClickContinueRecord = viewModel::onContinueRecordClicked,
     )
 
 }
@@ -56,9 +65,13 @@ private fun ChatContent(
     onValueChanged: (String) -> Unit,
     onSendMessage: () -> Unit,
     onCLickBack: () -> Unit,
+    onClickRecordVoice: () -> Unit,
+    onClickCancelRecord: () -> Unit,
+    onClickPauseRecord: () -> Unit,
+    onClickContinueRecord: () -> Unit,
 ) {
     val listState = rememberLazyListState()
-
+    val isDarkTheme = isSystemInDarkTheme()
     Scaffold(
             topBar = {
                 ChatAppBar(
@@ -76,11 +89,12 @@ private fun ChatContent(
         Box(
                 modifier = Modifier
                     .fillMaxSize()
+//                    .background(Theme.colors.background)
                     .padding(padding),
                 ) {
             Image(
                     modifier = Modifier.fillMaxSize(),
-                    painter = painterResource(id = R.drawable.background_chat_screen),
+                    painter = if (isDarkTheme) painterResource(id = R.drawable.background_chat_dark) else painterResource(id = R.drawable.background_chat_light),
                     contentDescription = "background chat screen",
                     contentScale = ContentScale.Crop,
             )
@@ -100,11 +114,16 @@ private fun ChatContent(
                     }
 
                 }
-                ChatTextField(
+                SendMessageBox(
                         text = messageText,
-                        onClickRecordVoice = {},
-                        onTextChanged = onValueChanged,
+                        isRecording = state.isRecording,
+                        isRecordingPause = state.isRecordingPause,
+                        onClickRecordVoice = onClickRecordVoice,
                         onClickSendButton = onSendMessage,
+                        onTextChanged = onValueChanged,
+                        onClickPauseRecord = onClickPauseRecord,
+                        onClickCancelRecord = onClickCancelRecord,
+                        onClickContinueRecord = onClickContinueRecord
                 )
             }
         }

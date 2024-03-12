@@ -48,7 +48,11 @@ class ChatViewModel(
         }
     }
 
+    fun onRecordVoiceClicked() {
+        _state.update { it.copy(isRecording = true) }
+    }
     fun onSendClicked() {
+        _state.update { it.copy(isRecording = false) }
         viewModelScope.launch {
             chatRepository.sendMessage(
                     NewMessage(
@@ -59,11 +63,20 @@ class ChatViewModel(
             )
         }
 
-        _state.update { it.copy(message = "") }
+        _state.update { it.copy(message = "",isRecordingPause = false) }
     }
 
     fun onChanceMessage(newValue: String) {
         _state.update { it.copy(message = newValue) }
+    }
+    fun onCancelRecordClicked() {
+        _state.update { it.copy(isRecording = false,isRecordingPause = false) }
+    }
+    fun onPauseRecordClicked() {
+        _state.update { it.copy(isRecordingPause = true) }
+    }
+    fun onContinueRecordClicked() {
+        _state.update { it.copy(isRecordingPause = false) }
     }
 
 }

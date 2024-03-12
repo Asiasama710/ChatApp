@@ -5,7 +5,6 @@ import com.asiasama.chatapp.data.model.MessageDto
 import com.asiasama.chatapp.data.model.toDto
 import com.asiasama.chatapp.data.model.toEntity
 import com.asiasama.chatapp.domain.ChatRepository
-import com.asiasama.chatapp.domain.entity.ChatHistory
 import com.asiasama.chatapp.domain.entity.Message
 import com.asiasama.chatapp.domain.entity.NewMessage
 import com.asiasama.chatapp.domain.entity.UserInfo
@@ -21,20 +20,26 @@ class ChatRepositoryImpl (): ChatRepository {
             listOf(
                     MessageDto(
                             id = "1",
-                            message = "Hello, how are you ? Ramadan Karem!",
-                            senderId = "123",
+                            message = "Hello, how are you? can I ask you something?",
+                            senderId = "1",
                             senderAvatar = "",
                     ),
                     MessageDto(
                             id = "1",
-                            message = "I wish you a happy Ramadan!",
+                            message = "Yes, sure. What do you want to ask?",
                             senderId = "123",
                             senderAvatar = ""
                     ),
                     MessageDto(
                             id = "1",
-                            message = "I wish you a happy Ramadan!",
+                            message = "",
                             senderId = "1",
+                            senderAvatar = ""
+                    ),
+                    MessageDto(
+                            id = "1",
+                            message = "",
+                            senderId = "123",
                             senderAvatar = ""
                     ),
             )
@@ -42,7 +47,7 @@ class ChatRepositoryImpl (): ChatRepository {
     private val user =
         UserInfo(
                 id = "123",
-                username = "Sama Doe",
+                username = "Asia Sama",
                 imageUrl = "https://randomuser.me/api/portraits/women/2.jpg",
                 isOnline = true
         )
@@ -67,11 +72,9 @@ class ChatRepositoryImpl (): ChatRepository {
 
     private fun answerWithFakeMessage(message: NewMessage) {
         val fakeAnswers = listOf(
-                "Ok, thank you for your response.",
-                "I will check it.",
-                "I will get back to you soon.",
-                "That's great.",
-                "Seems like a good idea.",
+                "Yes, That's great.",
+                "",
+                "I'm not sure.",
         )
         messages.value += MessageDto(
                 id = Random.nextInt().toString(),
