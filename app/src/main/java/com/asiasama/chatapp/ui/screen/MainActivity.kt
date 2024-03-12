@@ -1,4 +1,4 @@
-package com.asiasama.chatapp.ui
+package com.asiasama.chatapp.ui.screen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

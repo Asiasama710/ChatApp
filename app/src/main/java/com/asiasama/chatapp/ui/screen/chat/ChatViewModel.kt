@@ -1,6 +1,5 @@
 package com.asiasama.chatapp.ui.screen.chat
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.asiasama.chatapp.domain.ChatRepository
@@ -9,7 +8,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 
 class ChatViewModel(
     private val chatRepository: ChatRepository
@@ -44,13 +42,13 @@ class ChatViewModel(
             chatRepository.getMessages("123").collect { messages ->
                 _state.update { it.copy(messages = messages.toUiState()) }
             }
-            Log.e("TAG", "getMessages: ${state.value.messages}", )
         }
     }
 
     fun onRecordVoiceClicked() {
         _state.update { it.copy(isRecording = true) }
     }
+
     fun onSendClicked() {
         _state.update { it.copy(isRecording = false) }
         viewModelScope.launch {
@@ -63,18 +61,21 @@ class ChatViewModel(
             )
         }
 
-        _state.update { it.copy(message = "",isRecordingPause = false) }
+        _state.update { it.copy(message = "", isRecordingPause = false) }
     }
 
     fun onChanceMessage(newValue: String) {
         _state.update { it.copy(message = newValue) }
     }
+
     fun onCancelRecordClicked() {
-        _state.update { it.copy(isRecording = false,isRecordingPause = false) }
+        _state.update { it.copy(isRecording = false, isRecordingPause = false) }
     }
+
     fun onPauseRecordClicked() {
         _state.update { it.copy(isRecordingPause = true) }
     }
+
     fun onContinueRecordClicked() {
         _state.update { it.copy(isRecordingPause = false) }
     }

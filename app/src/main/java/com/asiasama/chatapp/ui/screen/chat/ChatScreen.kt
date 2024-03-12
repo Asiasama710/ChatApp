@@ -89,7 +89,6 @@ private fun ChatContent(
         Box(
                 modifier = Modifier
                     .fillMaxSize()
-//                    .background(Theme.colors.background)
                     .padding(padding),
                 ) {
             Image(
