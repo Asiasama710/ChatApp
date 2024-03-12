@@ -14,7 +14,7 @@ data class Colors(
 )
 
 val LightColors = Colors(
-        primary = Color(0xFF4B69D0),
+        primary = Color(0xFF6D9BBD),
         contentPrimary = Color(0xDE000A1F),
         contentTertiary = Color(0x61000B1F),
         surface = Color(0xFFFFFFFF),

@@ -4,4 +4,7 @@
     <string name="online">Online</string>
     <string name="mice_icon">mic icon</string>
     <string name="start_typing">start typing...</string>
+    <string name="icon_cancel_record">cancel record</string>
+    <string name="icon_record_and_pause">pause requerd</string>
+    <string name="icon_send">send\n</string>
 </resources>
