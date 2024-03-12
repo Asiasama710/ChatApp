@@ -14,24 +14,24 @@ data class Colors(
 )
 
 val LightColors = Colors(
-        primary = Color(0xFF6D9BBD),
+        primary = Color(0xFF585896),
         contentPrimary = Color(0xDE000A1F),
         contentTertiary = Color(0x61000B1F),
         surface = Color(0xFFFFFFFF),
         background = Color(0xFFFAFAFA),
         green = Color(0xFF31B43B),
         onPrimary = Color(0xFFECF2FF),
-        onSurface = Color(0xDEFFFFFF)
+        onSurface = Color(0xFFECF2FF),
 )
 
 val DarkColors = Colors(
-        primary = Color(0xFF4B69D0),
+        primary = Color(0xFF42426F),
         contentPrimary = Color(0xDEFFFFFF),
         contentTertiary = Color(0x61FFFFFF),
-        surface = Color(0xFF1C1C1C),
-        background = Color(0xFF151515),
+        surface = Color(0xFF27272B),
+        background = Color(0xFF1E1F24),
         green = Color(0xFF31B43B),
         onPrimary = Color(0xFFECF2FF),
-        onSurface = Color(0xDEFFFFFF)
+        onSurface = Color(0xFF27272B)
 
 )

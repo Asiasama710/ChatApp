@@ -89,7 +89,7 @@ private fun UserInfo(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Box(
-                modifier = Modifier.size(48.dp),
+                modifier = Modifier.size(42.dp),
                 contentAlignment = Alignment.BottomEnd
         ) {
             Image(
@@ -117,12 +117,12 @@ private fun UserInfo(
         Column {
             Text(
                     text = name,
-                    style = Theme.typography.titleSmall,
+                    style = Theme.typography.bodyLarge,
                     color = Theme.colors.onPrimary,
             )
             Text(
                     text = userStatus,
-                    style = Theme.typography.bodyMedium,
+                    style = Theme.typography.labelLarge,
                     color = Theme.colors.onPrimary,
             )
         }
