@@ -10,5 +10,5 @@ chat screen built with Jetpack Compose 🙌
 - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow)
 
 ## Architecture 
-<img src="https://github.com/Asiasama710/ChatApp/assets/105972942/c2f9828c-8fe4-4911-8f94-5548428bbb0b" align="left" width="560" height="400"/>
+<img src="https://github.com/Asiasama710/ChatApp/assets/105972942/c2f9828c-8fe4-4911-8f94-5548428bbb0b" align="left" width="500" height="390"/>
 
